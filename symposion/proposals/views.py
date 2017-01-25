@@ -69,7 +69,7 @@ def proposal_submit_kind(request, kind_slug):
     kind = get_object_or_404(ProposalKind, slug=kind_slug)
 
     if not request.user.is_authenticated():
-        return redirect("home")  # @@@ unauth'd speaker info page?
+        return redirect("account_login")
     else:
         try:
             speaker_profile = request.user.speaker_profile
