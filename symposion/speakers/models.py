@@ -28,7 +28,8 @@ class Speaker(models.Model):
                                                          "markdown-cheat-sheet/target='_blank'>"
                                                          "Markdown</a>."), verbose_name=_("Biography"))
     biography_html = models.TextField(blank=True)
-    photo = models.ImageField(upload_to="speaker_photos", blank=True, verbose_name=_("Photo"))
+    photo = models.ImageField(upload_to="speaker_photos", blank=True,
+                              help_text=_("Maximum file size: 10 MB"), verbose_name=_("Photo"))
     twitter_username = models.CharField(
         max_length=15,
         blank=True,
