@@ -87,13 +87,13 @@ class ProposalBase(models.Model):
 
     title = models.CharField(max_length=100, verbose_name=_("Title"))
     description = models.TextField(
-        _("Brief Description"),
+        _("Brief Summary"),
         max_length=400,  # @@@ need to enforce 400 in UI
         help_text=_("If your proposal is accepted this will be made public and printed in the "
                     "program. Should be one paragraph, maximum 400 characters.")
     )
     abstract = models.TextField(
-        _("Detailed Abstract"),
+        _("Description"),
         help_text=_("Detailed outline. Will be made public if your proposal is accepted. Edit "
                     "using <a href='http://daringfireball.net/projects/markdown/basics' "
                     "target='_blank'>Markdown</a>.")
