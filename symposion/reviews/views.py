@@ -217,6 +217,14 @@ def review_detail(request, pk):
                 message.proposal = proposal
                 message.save()
 
+                # Create email list of reviewers.
+                reviewers = []
+                for review in proposal.reviews.iterator():
+                    # Only add unique reviewers - reviewers can
+                    # review a proposal multiple times.
+                    if review.user.email not in reviewers:
+                        reviewers.append(review.user.email)
+
                 for speaker in speakers:
                     if speaker and speaker.email:
                         ctx = {
@@ -226,6 +234,7 @@ def review_detail(request, pk):
                         }
                         send_email(
                             [speaker.email], "proposal_new_message",
+                            cc=reviewers,
                             context=ctx
                         )
 
