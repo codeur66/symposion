@@ -6,7 +6,7 @@ from django.utils.html import strip_tags
 from django.contrib.sites.models import Site
 
 
-def send_email(to, kind, **kwargs):
+def send_email(to, kind, cc=[], **kwargs):
 
     current_site = Site.objects.get_current()
 
@@ -25,6 +25,6 @@ def send_email(to, kind, **kwargs):
 
     from_email = settings.DEFAULT_FROM_EMAIL
 
-    email = EmailMultiAlternatives(subject, message_plaintext, from_email, to)
+    email = EmailMultiAlternatives(subject, message_plaintext, from_email, to, cc=cc)
     email.attach_alternative(message_html, "text/html")
     email.send()
