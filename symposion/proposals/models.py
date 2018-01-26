@@ -100,7 +100,7 @@ class ProposalBase(models.Model):
     )
     abstract_html = models.TextField(blank=True)
     additional_notes = models.TextField(
-        _("Addtional Notes"),
+        _("Additional Notes"),
         blank=True,
         help_text=_("Anything else you'd like the program committee to know when making their "
                     "selection: your past experience, etc. This is not made public. Edit using "
