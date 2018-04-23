@@ -11,8 +11,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         ct, created = ContentType.objects.get_or_create(
             model="",
-            app_label="reviews",
-            defaults={"name": "reviews"}
+            app_label="reviews"
         )
 
         for ps in ProposalSection.objects.all():
